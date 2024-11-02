@@ -5,17 +5,23 @@ const cors = require('cors');
 const librosRouter = require('./app/routers/tareas.router.js'); // Única ruta que queda
 const db = require('./app/config/db.config.js');
 
-// Sincronizar la base de datos y las tablas sin eliminarlas ni recrearlas
-db.sequelize.sync().then(() => {
-  console.log('Las tablas se sincronizaron correctamente sin eliminar ni recrear');
-});
-
-// Configuración de CORS para permitir solicitudes desde localhost:3000
+// Configuración de CORS para permitir solicitudes desde localhost y el dominio en producción
+const allowedOrigins = [
+  'https://crud-5pnb.onrender.com',
+  'https://my-frontend-1ucr.onrender.com'
+];
 const corsOptions = {
-  origin: 'http://localhost:3000',
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   optionsSuccessStatus: 200
 };
 app.use(cors(corsOptions));
+
 
 // Middlewares
 app.use(bodyParser.json());
