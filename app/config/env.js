@@ -2,7 +2,7 @@ const env = {
   database: 'hotelstar_c234', // Nombre de la base de datos
   username: 'hotelstar_c234_user', // Usuario de la base de datos
   password: 'ICoXvOMhtT0llO2hVq6uMryn6lqMVNEC', // Contraseña de la base de datos
-  host: 'dpg-cse7lv5svqrc73etq8mg-a.oregon-postgres.render.com', // Host del servidor PostgreSQL
+  host: 'dpg-cse7lv5svqrc73etq8mg-a', // Host del servidor PostgreSQL
   dialect: 'postgres', // El dialecto de la base de datos (PostgreSQL)
   pool: {
     max: 5, // Número máximo de conexiones en el pool
